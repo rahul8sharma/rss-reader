@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style='text-align: center;'>Feeds (<%= @feeds.count %>)</h1>
+
+<%= link_to 'New Feed', new_feed_path %>
+
+<br>
+<br>
+<% if @feeds.length > 0 %>
+  <table id='feeds-table'>
+    <thead>
+      <tr>
+        <th>Url</th>
+        <th>Name</th>
+        <th>Link</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @feeds.each do |feed| %>
+        <tr>
+          <td><a href="<%= feed.url %>"><%= feed.url %></a></td>
+          <td><%= feed.name %></td>
+          <td><a href="<%= feed.link %>"><%= feed.link %></a></td>
+          <td><%= link_to 'Show', feed %></td>
+          <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+          <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h2> No feeds found... </h2>
+<% end %>

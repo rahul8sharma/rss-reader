@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>RssReader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="header">
+      <a href="#default" class="logo">RSS reader</a>
+      <div class="header-right">
+        <a class="<%= (request.env['PATH_INFO'].include? 'feeds') ? 'active' : '' %>" href="<%= feeds_path %>">Feeds</a>
+        <a class="<%= (request.env['PATH_INFO'].include? 'articles') ? 'active' : '' %>" href="<%= articles_path %>">Articles</a>
+      </div>
+    </div>
+    <div style="padding-left:20px">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<div class="gallery">
+  <h2><%= @article.title %> : <%= @article.date.strftime("%B %d, %Y") %> </h2>
+  <a target="_blank" href="<%= @article.link %>"><%= @article.link %></a>
+  <div class="desc"><%= @article.description %></div>
+</div>
+
+<br>
+<br>
+
+<%= link_to 'Back', articles_path %>
